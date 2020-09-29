@@ -6,8 +6,12 @@ var myExpo = {};
 
 // ------------ Body.OnLoad handler
 
-function BodyOnLoad(reqPage) {
+function BodyOnLoad() {
   try {
+ 
+    queryString = window.location.search;
+    urlParams = new URLSearchParams(queryString);
+    reqPage = urlParams.get('page');
  
     console.log("Requested page <" + reqPage + "> from URL");
 
