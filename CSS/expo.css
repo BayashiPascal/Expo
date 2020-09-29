@@ -69,6 +69,7 @@ ul {
 
 .page code {
   font-size: 25px;
+  white-space: pre;
 }
 
 .page img {
