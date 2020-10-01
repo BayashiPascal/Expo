@@ -200,7 +200,7 @@ Expo.prototype.CreateTOC = function() {
         pageTitle = page.getAttribute("data-title");
         if (pageTitle) {
           a = document.createElement("a");
-          a.href = "index.php?page=" + (index+1);
+          a.href = "index.html?page=" + (index+1);
           a.innerHTML = pageTitle + " (p." + (index+1) + ")";
           a.className = "tocLink"; 
           li = document.createElement("li");
