@@ -37,12 +37,12 @@ body {
     <div class="prePostPage" id="header"> Header of the pages </div>
     <div id="pages">
 
-      <div class="page pageTitle" data-title="Title of this page (optional)">
-        Content of the page
+      <div class="page">
+Content of the page
       </div>
 
       <div class="page">
-        Content of another page
+Content of another page
       </div>
 
    </div>
@@ -50,31 +50,77 @@ body {
    <div class="prePostPage" id="footer"> Footer of the pages </div>
    </body>
   <script>
+var myExpo = {};
+
 window.onload = function() {
   BodyOnLoad();
 }
 
 function BodyOnLoad() {
+  $("body").keydown(KeyPressed);
   queryString = window.location.search;
   urlParams = new URLSearchParams(queryString);
   reqPage = urlParams.get('page');
   page = parseInt(reqPage);
-  if (isNaN(page)) page = 1;
+  if(isNaN(page)) page = 1;
+  myExpo = new Expo();
+  myExpo.showPage();
+}
 
-  /*myExpo = new Expo();
+function KeyPressed(evt) {
+  if(evt.keyCode == 37) {
+    myExpo.PrevPage();
+  } else if(evt.keyCode == 39) {
+    myExpo.NextPage();
+  } else if(evt.keyCode == 38) {
+    myExpo.PrevSubPage();
+  } else if(evt.keyCode == 40) {
+    myExpo.NextSubPage();
+  } else return;
+  evt.preventDefault();
+}
 
-  $("body").keydown(BodyKeyPressed);
+function Expo() {
+  this.curPage = 0;
+  this.nbPage = document.querySelectorAll('#pages .page').length;
+}
 
-  myExpo.HideAllPages();
+Expo.prototype.PrevPage = function() {
+  if (page > 0) {
+    page = this.curPage - 1;
+    this.ShowPage();
+  }
+}
 
-  myExpo.MoveToPage(page - 1);*/
+Expo.prototype.NextPage = function() {
+  if (page < this.nbPage - 1) {
+    page = this.curPage + 1;
+    this.ShowPage();
+  }
+}
+
+Expo.prototype.PrevSubPage = function() {
+  if (page > 0) {
+    page = this.curPage - 1;
+    this.ShowPage();
+  }
+}
+
+Expo.prototype.NextSubPage = function() {
+  if (page < this.nbPage - 1) {
+    page = this.curPage + 1;
+    this.ShowPage();
+  }
+}
+
+Expo.prototype.ShowPage = function() {
+
 }
 
 
 /*
 // ------------ Global variables
 
-var myExpo = {};
 
 // ------------ Body.OnLoad handler
 
@@ -108,45 +154,9 @@ function BodyOnLoad() {
 
 // ------------ Keyboard events handler
 
-function BodyKeyPressed(evt) {
-  try {
-
-    switch(evt.keyCode){
-      case 37: // cursor left
-        myExpo.MoveToPrevPage();
-        evt.preventDefault();
-        break;
-      case 39: // cursor right
-        myExpo.MoveToNextPage();
-        evt.preventDefault();
-        break;
-      case 84: // T
-        myExpo.ToggleTOC();
-        evt.preventDefault();
-        break;
-      default:
-        break;
-    }
-    
-  } catch (err) {
-    console.log("BodyKeyPress " + err.stack);
-  }
-}
 
 // ------------ Expo class
 
-function Expo() {
-  try {
-
-    this.curPage = -1;
-    this.prevPage = -1;
-    this.isUnderTransition = false;
-    this.isTOCDisplayed = true;
-    
-  } catch (err) {
-    console.log("Expo " + err.stack);
-  }
-}
 
 Expo.prototype.GetNbPages = function(page) {
   try {
@@ -224,35 +234,6 @@ Expo.prototype.MoveToPage = function(page) {
   }
 }
 
-Expo.prototype.MoveToPrevPage = function() {
-  try {
-
-    console.log("Prev");
-
-    page = this.curPage - 1;
-    if (page >= 0 && page < this.GetNbPages()) {
-      this.ShowPage(page);
-    }
-
-  } catch (err) {
-    console.log("Expo.MoveToPrevPage " + err.stack);
-  }
-}
-
-Expo.prototype.MoveToNextPage = function() {
-  try {
-
-    console.log("Next");
-
-    page = this.curPage + 1;
-    if (page >= 0 && page < this.GetNbPages()) {
-      this.ShowPage(page);
-    }
-
-  } catch (err) {
-    console.log("Expo.MoveToNextPage " + err.stack);
-  }
-}
 
 Expo.prototype.HideAllPages = function() {
   try {
