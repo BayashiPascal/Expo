@@ -33,8 +33,10 @@ body {
     </style>
   </head>
   <title> Title of the presentation </title>
-  <body>
-    <div class="prePostPage" id="header"> Header of the pages </div>
+  <body id="body">
+    <div class="prePostPage" id="header">
+Header of the pages
+    </div>
     <div id="pages">
 
       <div class="page">
@@ -46,76 +48,81 @@ Content of another page
       </div>
 
    </div>
+   <div class="prePostPage" id="footer">
+Footer of the pages
+   </div>
    <div class="prePostPage" id="status"></div>
-   <div class="prePostPage" id="footer"> Footer of the pages </div>
-   </body>
+  </body>
   <script>
-var myExpo = {};
-
-window.onload = function() {
-  BodyOnLoad();
+// Helper function that return the required range of integer as an array
+function range(size, startAt = 0) {
+  return [...Array(size).keys()].map(i => i + startAt);
 }
 
-function BodyOnLoad() {
-  $("body").keydown(KeyPressed);
+// Helper function to get an element in the DOM from its id
+function elem(id) { return document.getElementById(id); }
+
+// Instance of the main class
+let myExpo = {};
+
+// Main class
+class Expo {
+  // Constructor
+  constructor() {
+    // Index of the current page
+    this.curPage = 0;
+    // Number of pages
+    this.nbPage = document.querySelectorAll('#pages .page').length;
+  }
+  // Move to the previous page
+  prevPage() { if(this.curPage > 0) this.curPage -= 1; }
+  // Move to the next page
+  prevPage() { if(this.curPage < this.nbPage - 1) this.curPage += 1; }
+  // Display the current page
+  showCurrentPage() {
+    // Hide all the pages
+    document.querySelectorAll('#pages .page').forEach(
+      page => page.style.display = "none");
+    // Display the current page
+    let curPage = document.querySelectorAll('#pages .page')[this.curPage];
+    curPage.style.display = "block";
+    // Update the status
+    elem("status").innerHTML = (this.curPage + 1) + "/" + this.nbPage;
+  }
+}
+
+// Hanlder for the onload event
+window.onload = function() {
+  // Add the event handler for the key press
+  elem("body").addEventListener("keydown", KeyPressed);
+  // Create the instance of the main class
+  myExpo = new Expo();
+  // Set the current page to 1 or the page requested through the url
+  // (.../index.html?page=XXX)
   queryString = window.location.search;
   urlParams = new URLSearchParams(queryString);
   reqPage = urlParams.get('page');
   page = parseInt(reqPage);
   if(isNaN(page)) page = 1;
-  myExpo = new Expo();
-  myExpo.showPage();
+  myExpo.curPage = page - 1;
+  // Display the current page
+  myExpo.showCurrentPage();
 }
 
+// Handler for the keypress events
 function KeyPressed(evt) {
-  if(evt.keyCode == 37) {
-    myExpo.PrevPage();
-  } else if(evt.keyCode == 39) {
-    myExpo.NextPage();
-  } else if(evt.keyCode == 38) {
-    myExpo.PrevSubPage();
-  } else if(evt.keyCode == 40) {
-    myExpo.NextSubPage();
-  } else return;
+  // Cursor left
+  if(evt.keyCode == 37) myExpo.prevPage();
+  // Cursor right
+  else if(evt.keyCode == 39) myExpo.nextPage();
+  // Ignore other keys
+  else return;
+  // Display the new current page
+  myExpo.showCurrentPage();
+  // Avoid the event to bubble up
   evt.preventDefault();
 }
 
-function Expo() {
-  this.curPage = 0;
-  this.nbPage = document.querySelectorAll('#pages .page').length;
-}
-
-Expo.prototype.PrevPage = function() {
-  if (page > 0) {
-    page = this.curPage - 1;
-    this.ShowPage();
-  }
-}
-
-Expo.prototype.NextPage = function() {
-  if (page < this.nbPage - 1) {
-    page = this.curPage + 1;
-    this.ShowPage();
-  }
-}
-
-Expo.prototype.PrevSubPage = function() {
-  if (page > 0) {
-    page = this.curPage - 1;
-    this.ShowPage();
-  }
-}
-
-Expo.prototype.NextSubPage = function() {
-  if (page < this.nbPage - 1) {
-    page = this.curPage + 1;
-    this.ShowPage();
-  }
-}
-
-Expo.prototype.ShowPage = function() {
-
-}
 
 
 /*
