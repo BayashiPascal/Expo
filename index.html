@@ -59,25 +59,21 @@ Header of the pages
     <div id="toc"></div>
     <div id="pages">
 
-      <div class="page" data-title="Intro">
+      <div class="page" data-title="Introduction">
 Introduction page
       </div>
 
-      <div class="chapter" data-title="chap1">
+      <div class="chapter" data-title="chapter 1">
         <div class="page" data-title="1-1">
 chapter 1 page 1
         </div>
 
         <div class="page" data-title="1-2">
-chapter 1 page 2<br><br><br><br>
-chapter 1 page 2<br><br><br><br>
-chapter 1 page 2<br>
-chapter 1 page 2<br>
-chapter 1 page 2<br>
+chapter 1 page 2
         </div>
       </div>
 
-      <div class="chapter" data-title="chap2">
+      <div class="chapter" data-title="chapter 2">
         <div class="page" data-title="2-1">
 chapter 2 page 1
         </div>
@@ -87,7 +83,7 @@ chapter 2 page 2
         </div>
       </div>
 
-      <div class="page" data-title="Conclu">
+      <div class="page" data-title="Conclusion">
 Conclusion page
       </div>
 
@@ -96,6 +92,7 @@ Conclusion page
 Footer of the pages
     </div>
     <div class="prePostPage" id="status">
+      <input type="button" onclick="toc();" value="ToC">
       <input type="button" onclick="prevChapter();" value="&#60;&#60">
       <input type="button" onclick="prevPage();" value="&#60;">
       <span id="statusPage"></span>
@@ -284,7 +281,8 @@ function KeyPressed(evt) {
   evt.preventDefault();
 }
 
-// Handlers for the click event on the chapter/page move buttons
+// Handlers for the click event on the chapter/page move and ToC buttons
+function toc() { myExpo.toggleToc(); myExpo.showCurrentPage(); }
 function prevChapter() { myExpo.prevChapter(); myExpo.showCurrentPage(); }
 function prevPage() { myExpo.prevPage(); myExpo.showCurrentPage(); }
 function nextPage() { myExpo.nextPage(); myExpo.showCurrentPage(); }
