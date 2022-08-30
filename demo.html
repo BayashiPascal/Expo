@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<!--
+    Expo - an HTML based presentation tool.
+    Copyright (C) 2022 Pascal Baillehache info@baillehachepascal.dev
+    https://baillehachepascal.dev
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+html { width: 100%; height: 100%; }
+body {
+  background-color: #aaaaaa; color: #433126;
+  font-family:  serif; font-size: 40px;
+  width: 100%; height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+#pages {
+  margin: auto; padding: 10px;
+  height: 100%; overflow: auto;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+}
+.page {
+  display: none;
+  margin: auto; padding: 10px; vertical-align: middle;
+}
+.pageTitle { font-size: 60px; text-align: center; }
+.prePostPage {
+  clear: both; position: absolute; width: 100%;
+  text-align: center; font-size: 20px;
+}
+#header { height: 50px; margin-top: 0px; background-color: #aaaaaa; }
+#footer { height: 25px; margin-top: -50px; background-color: #aaaaaa; }
+#status { height: 25px; margin-top: -75px; background-color: #aaaaaa; }
+#status div {display: inline-block; }
+.divFadeIn { visibility: visible; opacity: 1; transition: opacity 1s linear; }
+.divFadeOut {
+  visibility: hidden; opacity: 0;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
+}
+#toc {
+  display: none; margin: auto; padding: 10px; margin-left: 10%;
+  height: 100%; overflow: auto;
+  flex-direction: column; font-size: 20px;
+  justify-content: center; align-items: left;
+}
+.divTocChapter { font-size: 25px; margin-top: 10px; margin-bottom: 10px; }
+.divTocPage { font-size: 20px; margin-left: 20px; }
+input[type="button"] {
+  background-color: #fecb5e; box-shadow: 2px 2px 10px #888888;
+  margin: 2px 5px; padding: 2px 4px; height: 24px;
+  border: 1px solid #fee9aa; border-radius: 5px; color: #624838;
+}
+  </style>
+  </head>
+  <title> Expo, an HTML based presentation tool </title>
+  <body id="body">
+    <div class="prePostPage" id="header">
+- Expo demo -
+    </div>
+    <div id="toc"></div>
+    <div id="pages">
+
+      <div class="page" data-title="Welcome page">
+<div style="margin: auto;">Welcome to Expo !</div>
+<div style="font-size:20px; width: 80%; margin: auto;">
+Expo is an HTML based presentation tool.<br>Press the bottom cursor key, or click the <input type="button" value="&#62;"> button to start the demo.
+</div>
+      </div>
+
+      <div class="chapter" data-title="Commands">
+
+        <div class="page" data-title="Moving through the presentation">
+<div style="font-size:20px; width: 80%; margin: auto;">
+The presentation is divided in pages, eventually grouped in chapters.<br>
+To navigate to the next page, you can press the bottom cursor key, or click the <input type="button" value="&#62;"> button. For the previous page it is the top cursor key, or <input type="button" value="&#60;"> button. The same way you can navigate to the beginning of the previous/next chapter with the left/right cursor key or <input type="button" value="&#60;&#60">/<input type="button" value="&#62;&#62;"> buttons. (a page which doesn't belong to a chapter is treated as a chapter of one single page)<br>
+Now, go to the next page !
+</div>
+        </div>
+
+        <div class="page" data-title="Displaying the table of content">
+<div style="font-size:20px; width: 80%; margin: auto;">
+Expo generates automatically the table of contents from the list of chapters and pages. You can display it by pressing the 't' key, or clicking on the <input type="button" value="ToC"> button. Come back to the page you were the same way, 't' key or <input type="button" value="ToC"> button.<br>
+From the ToC you can also jump directly to another page by clicking on its title.<br>
+The number of the current page is also displayed at the bottom of each page.
+</div>
+        </div>
+
+      </div>
+
+      <div class="chapter" data-title="Page content">
+
+        <div class="page" data-title="Page with an image">
+<div style="font-size:20px; width: 80%; margin: auto;">
+A page can contain whatever you can code with HTML and CSS. Graphics for example:<br>
+<img src="wfc013.jpg" style="margin:auto; width: 80%;"><br>
+Or, <span style="font-style: italic;">formatted</span> <span style="text-decoration: underline;">text</span>...
+</div>
+        </div>
+
+        <div class="page" data-title="Interactive page">
+<div style="font-size:20px; width: 80%; margin: auto;">
+You can also make your presentation dynamic or interactive if you know a little of JavaScript.<br>
+<input type="button" value="Click me" onclick="elem('divTestClick').style.display = 'block';"><br>
+<div id="divTestClick" style="display:none;">Hello world!</div>
+</div>
+        </div>
+
+        <div class="page" data-title="How to use">
+<div style="font-size:20px; width: 80%; margin: auto;">
+Expo is a single HTML page, ready to use without installing anything, easy to edit, share and version control.<br>
+To learn how to build your presentation using Expo, refer to this <a target="blank_" href="http://baillehachepascal.dev/2022/expo.php">article</a>.
+</div>
+        </div>
+
+      </div>
+
+      <div class="page" data-title="The end">
+<div style="font-size:20px; width: 80%; margin: auto;">
+The <a target="blank_" href="http://baillehachepascal.dev/">author</a> used it to make a lecture about programming. It worked well so he decided to share it. And you, what will you present using Expo ? &#128516;<br>
+</div>
+      </div>
+
+    </div>
+    <div class="prePostPage" id="footer">
+More info about Expo <a target="blank_" href="http://baillehachepascal.dev/2022/expo.php">here</a>.
+    </div>
+    <div class="prePostPage" id="status">
+      <input type="button" onclick="toc();" value="ToC">
+      <input type="button" onclick="prevChapter();" value="&#60;&#60">
+      <input type="button" onclick="prevPage();" value="&#60;">
+      <span id="statusPage"></span>
+      <input type="button" onclick="nextPage();" value="&#62;">
+      <input type="button" onclick="nextChapter();" value="&#62;&#62;">
+    </div>
+  </body>
+  <script>
+// Helper function to get an element in the DOM from its id
+function elem(id) { return document.getElementById(id); }
+
+// Instance of the main class
+let myExpo = {};
+
+// Main class
+class Expo {
+  // Constructor
+  constructor() {
+    // Index of the current page
+    this.curPage = 0;
+    // Index of the page to move to
+    this.moveToPage = 0;
+    // Number of pages
+    this.nbPage = document.querySelectorAll('.page').length;
+    // Flag to memorise if the TOC is displayed
+    this.flagToc = false;
+    // Create the TOC
+    let shiftPage = 0;
+    document.querySelectorAll('#pages > div').forEach((chapter, iChapter) => {
+      if(chapter.classList.contains("chapter")) {
+        let divChap = document.createElement("div");
+        divChap.className = "divTocChapter";
+        divChap.append(document.createTextNode(chapter.dataset.title));
+        chapter.querySelectorAll('.page').forEach((page, iPage) => {
+          let pageLink = document.createElement("a");
+          pageLink.href = "?page=" + (iPage + shiftPage + 1);
+          pageLink.append(document.createTextNode(page.dataset.title));
+          let divPage = document.createElement("div");
+          divPage.className = "divTocPage";
+          divPage.append(pageLink);
+          divChap.append(divPage);
+        });
+        elem("toc").append(divChap);
+        shiftPage += chapter.querySelectorAll('.page').length;
+      } else {
+        let pageLink = document.createElement("a");
+        pageLink.className = "divTocPage";
+        pageLink.href = "?page=" + (shiftPage + 1);
+        pageLink.append(document.createTextNode(chapter.dataset.title));
+        elem("toc").append(pageLink);
+        shiftPage += 1;
+      }
+    });
+  }
+  // Move to the previous page
+  prevPage() { if(this.curPage > 0) this.moveToPage = this.curPage - 1; }
+  // Move to the next page
+  nextPage() { 
+    if(this.curPage < this.nbPage - 1) this.moveToPage = this.curPage + 1;
+  }
+  // Move to the beginning of the previous chapter or previous chapter-less page
+  prevChapter() {
+    let curPage = document.querySelectorAll('.page')[this.curPage];
+    let pageParent = curPage.parentElement;
+    // If we are in a chapter
+    let prevPage = document.querySelectorAll('.page')[this.moveToPage];
+    if(pageParent.classList.contains("chapter")) {
+      // Move to the first page before that chapter
+      while(this.moveToPage > 0 && prevPage.parentElement == pageParent) {
+        this.moveToPage = this.moveToPage - 1;
+        prevPage = document.querySelectorAll('.page')[this.moveToPage];
+      }
+    // Else we are not in a chapter, move the previous page
+    } else if(this.curPage > 0) this.moveToPage = this.curPage - 1;
+    // If we are still in a chapter, move to the beginning of that chapter
+    prevPage = document.querySelectorAll('.page')[this.moveToPage];
+    let prevPageParent = prevPage.parentElement;
+    if(prevPageParent.classList.contains("chapter")) {
+      while(this.moveToPage > 0 && prevPage.parentElement == prevPageParent) {
+        this.moveToPage = this.moveToPage - 1;
+        prevPage = document.querySelectorAll('.page')[this.moveToPage];
+      }
+      if(prevPage.parentElement != prevPageParent) {
+        this.moveToPage = this.moveToPage + 1;
+      }
+    }
+  }
+  // Move to the beginning of the next chapter or next chapter-less page
+  nextChapter() {
+    let curPage = document.querySelectorAll('.page')[this.curPage];
+    let pageParent = curPage.parentElement;
+    // If we are in a chapter
+    if(pageParent.classList.contains("chapter")) {
+      // Move to the first page after that chapter
+      let nextPage = curPage;
+      while(
+        this.moveToPage < this.nbPage - 1 &&
+        nextPage.parentElement == pageParent
+      ) {
+        this.moveToPage = this.moveToPage + 1;
+        nextPage = document.querySelectorAll('.page')[this.moveToPage];
+      }
+    // Else we are not in a chapter, if we are not at the end of the pages
+    } else if(this.curPage < this.nbPage - 1) {
+      // Move to the next page
+      this.moveToPage = this.curPage + 1;
+    }
+  }
+  // Display the current page
+  showCurrentPage() {
+    // Fade out the current page
+    let curPage = document.querySelectorAll('.page')[this.curPage];
+    curPage.classList.add("divFadeOut");
+    setTimeout(() => {
+      // Hide the current page
+      let curPage = document.querySelectorAll('.page')[myExpo.curPage];
+      curPage.style.display = "none";
+      curPage.classList.remove("divFadeOut");
+      // Display and fade in the current page
+      myExpo.curPage = myExpo.moveToPage;
+      curPage = document.querySelectorAll('.page')[myExpo.curPage];
+      curPage.style.display = "block";
+      curPage.classList.add("divFadeIn");
+      // Update the status
+      elem("statusPage").innerHTML = (this.curPage + 1) + "/" + this.nbPage;
+      setTimeout(() => {
+        let curPage = document.querySelectorAll('.page')[myExpo.curPage];
+        curPage.classList.remove("divFadeIn");
+      }, 1000);
+    }, 1000);
+  }
+  // Display/hide the toc
+  toggleToc() {
+    if(this.toc) {
+      this.toc = false;
+      elem("pages").style.display = "flex";
+      elem("toc").style.display = "none";
+    } else {
+      this.toc = true;
+      elem("pages").style.display = "none";
+      elem("toc").style.display = "flex";
+    }
+  }
+}
+
+// Hanlder for the onload event
+window.onload = function() {
+  // Add the event handler for the key press
+  elem("body").addEventListener("keydown", KeyPressed);
+  // Create the instance of the main class
+  myExpo = new Expo();
+  // Set the current page to 1 or the page requested through the url
+  // (.../index.html?page=XXX)
+  queryString = window.location.search;
+  urlParams = new URLSearchParams(queryString);
+  reqPage = urlParams.get('page');
+  page = parseInt(reqPage);
+  if(isNaN(page)) page = 1;
+  myExpo.moveToPage = page - 1;
+  // Display the current page
+  myExpo.showCurrentPage();
+}
+
+// Handler for the keypress events
+function KeyPressed(evt) {
+  // Cursor top
+  if(evt.keyCode == 38) myExpo.prevPage();
+  // Cursor down
+  else if(evt.keyCode == 40) myExpo.nextPage();
+  // Cursor right
+  else if(evt.keyCode == 39) myExpo.nextChapter();
+  // Cursor left
+  else if(evt.keyCode == 37) myExpo.prevChapter();
+  // 't'
+  else if(evt.keyCode == 84) myExpo.toggleToc();
+  // Ignore other keys
+  else return;
+  // Display the new current page
+  myExpo.showCurrentPage();
+  // Avoid the event to bubble up
+  evt.preventDefault();
+}
+
+// Handlers for the click event on the chapter/page move and ToC buttons
+function toc() { myExpo.toggleToc(); myExpo.showCurrentPage(); }
+function prevChapter() { myExpo.prevChapter(); myExpo.showCurrentPage(); }
+function prevPage() { myExpo.prevPage(); myExpo.showCurrentPage(); }
+function nextPage() { myExpo.nextPage(); myExpo.showCurrentPage(); }
+function nextChapter() { myExpo.nextChapter(); myExpo.showCurrentPage(); }
+  </script> 
+</html>
