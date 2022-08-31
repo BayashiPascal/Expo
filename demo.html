@@ -34,7 +34,7 @@ body {
   justify-content: center; align-items: center;
 }
 .page {
-  display: none;
+  display: none; font-size: 20px; width: 80%; 
   margin: auto; padding: 10px; vertical-align: middle;
 }
 .pageTitle { font-size: 60px; text-align: center; }
@@ -75,28 +75,22 @@ input[type="button"] {
     <div id="pages">
 
       <div class="page" data-title="Welcome page">
-<div style="margin: auto;">Welcome to Expo !</div>
-<div style="font-size:20px; width: 80%; margin: auto;">
+<span style="font-size:30px;">Welcome to Expo !</span><br>
 Expo is an HTML based presentation tool.<br>Press the bottom cursor key, or click the <input type="button" value="&#62;"> button to start the demo.
-</div>
       </div>
 
       <div class="chapter" data-title="Commands">
 
         <div class="page" data-title="Moving through the presentation">
-<div style="font-size:20px; width: 80%; margin: auto;">
 The presentation is divided in pages, eventually grouped in chapters.<br>
 To navigate to the next page, you can press the bottom cursor key, or click the <input type="button" value="&#62;"> button. For the previous page it is the top cursor key, or <input type="button" value="&#60;"> button. The same way you can navigate to the beginning of the previous/next chapter with the left/right cursor key or <input type="button" value="&#60;&#60">/<input type="button" value="&#62;&#62;"> buttons. (a page which doesn't belong to a chapter is treated as a chapter of one single page)<br>
 Now, go to the next page !
-</div>
         </div>
 
         <div class="page" data-title="Displaying the table of content">
-<div style="font-size:20px; width: 80%; margin: auto;">
 Expo generates automatically the table of contents from the list of chapters and pages. You can display it by pressing the 't' key, or clicking on the <input type="button" value="ToC"> button. Come back to the page you were the same way, 't' key or <input type="button" value="ToC"> button.<br>
 From the ToC you can also jump directly to another page by clicking on its title.<br>
 The number of the current page is also displayed at the bottom of each page.
-</div>
         </div>
 
       </div>
@@ -104,34 +98,26 @@ The number of the current page is also displayed at the bottom of each page.
       <div class="chapter" data-title="Page content">
 
         <div class="page" data-title="Page with an image">
-<div style="font-size:20px; width: 80%; margin: auto;">
 A page can contain whatever you can code with HTML and CSS. Graphics for example:<br>
 <img src="wfc013.jpg" style="margin:auto; width: 80%;"><br>
 Or, <span style="font-style: italic;">formatted</span> <span style="text-decoration: underline;">text</span>...
-</div>
         </div>
 
         <div class="page" data-title="Interactive page">
-<div style="font-size:20px; width: 80%; margin: auto;">
 You can also make your presentation dynamic or interactive if you know a little of JavaScript.<br>
 <input type="button" value="Click me" onclick="elem('divTestClick').style.display = 'block';"><br>
 <div id="divTestClick" style="display:none;">Hello world!</div>
-</div>
         </div>
 
         <div class="page" data-title="How to use">
-<div style="font-size:20px; width: 80%; margin: auto;">
 Expo is a single HTML page, ready to use without installing anything, easy to edit, share and version control.<br>
 To learn how to build your presentation using Expo, refer to this <a target="blank_" href="http://baillehachepascal.dev/2022/expo.php">article</a>.
-</div>
         </div>
 
       </div>
 
       <div class="page" data-title="The end">
-<div style="font-size:20px; width: 80%; margin: auto;">
 The <a target="blank_" href="http://baillehachepascal.dev/">author</a> used it to make a lecture about programming. It worked well so he decided to share it. And you, what will you present using Expo ? &#128516;<br>
-</div>
       </div>
 
     </div>
