@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<!--
+    Expo - an HTML based presentation tool.
+    Copyright (C) 2022 Pascal Baillehache info@baillehachepascal.dev
+    https://baillehachepascal.dev
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+-->
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+@font-face {font-family: nestor_font; src: url('Nestor.ttf');}
+html { width: 100%; height: 100%; }
+body {
+  background-color: #aaaaaa; color: #433126;
+  font-family:  nestor_font; font-size: 80px;
+  width: 100%; height: 100%;
+  margin: 0;
+  overflow: hidden;
+  display: table;
+}
+#pages {
+  margin: auto; padding: 10px;
+  height: 90%; overflow: auto;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+}
+.page {
+  display: none;
+  margin: auto; padding: 10px; vertical-align: middle;
+}
+.pageTitle { font-size: 60px; text-align: center; }
+.prePostPage {
+  display:table-row; width: 100%; text-align: center; font-size: 20px;
+}
+#header { height: 50px; margin-top: 0px; background-color: #aaaaaa; }
+#footer { height: 25px; margin-top: -100px; background-color: #aaaaaa; }
+#status { height: 25px; margin-top: -75px; background-color: #aaaaaa; }
+#status div {display: inline-block; }
+.divFadeIn { visibility: visible; opacity: 1; transition: opacity 1s linear; }
+.divFadeOut {
+  visibility: hidden; opacity: 0;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
+}
+#content {
+  display:table-cell; vertical-align:middle; overflow:auto;
+}
+#toc {
+  display: none; margin: auto; padding: 10px; margin-left: 10%;
+  font-size: 20px;
+  justify-content: center; max-height:80%;
+}
+.divTocChapter { font-size: 25px; margin-top: 10px; margin-bottom: 10px; }
+.divTocPage { display:block; font-size: 20px; margin-left: 20px; }
+input[type="button"] {
+  background-color: #fecb5e; box-shadow: 2px 2px 10px #888888;
+  margin: 2px 5px; padding: 2px 4px; height: 24px;
+  border: 1px solid #fee9aa; border-radius: 5px; color: #624838;
+}
+  </style>
+  </head>
+  <title>「職業人に学ぶ」ー万世中学校ー令和五年十一月十四日</title>
+  <body id="body">
+    <div class="prePostPage" id="header">
+「職業人に学ぶ」 ー 万世中学校 ー 令和五年十月十四日
+    </div>
+    <div id="content">
+      <div id="toc"></div>
+      <div id="pages">
+
+        <div class="page" data-title="「職業人に学ぶ」">
+「<ruby>職業人<rt>しょくぎょうにん</rt></ruby>に<ruby>学<rt>まな</rt>ぶ</ruby>」 ー 万世中学校 
+        </div>
+
+        <div class="chapter" data-title="自己紹介">
+          <div class="page" data-title="自己紹介">
+<div style="text-align:center;">
+自己紹介:<br>
+<img src="./profile.jpeg" style="width:20%;display:inline-block;vertical-align:middle;">
+<ul style="display:inline-block;text-align:left;vertical-align:middle;">
+<li>パスカル　バヤシ</li>
+<li>フランス人</li>
+<li>18年間日本に滞在</li>
+<li>京都に住んでいる</li>
+</ul>
+</div>
+          </div>
+          <div class="page" data-title="職業紹介">
+<div style="text-align:center;">
+職業：<br>
+<img src="./programmers.jpg" style="width:20%;display:inline-block;vertical-align:middle;">
+<ul style="display:inline-block;text-align:left;vertical-align:middle;">
+<li>「ソフト開発者」</li>
+<li>「プログラマー」<br>（英語の「programmer」）</li>
+</ul>
+</div>
+          </div>
+        </div>
+
+        <div class="chapter" data-title="仕事の内容">
+          <div class="page" data-title="仕事の内容">
+<div style="text-align:center;">
+仕事の内容:<br>
+<img src="./programmer_job.jpg" style="width:20%;display:inline-block;vertical-align:middle;">
+<ul style="display:inline-block;text-align:left;vertical-align:middle;">
+<li>パソコン、スマホ、タブレットの<br>ソフト</li>
+<li>ロボット、工場の機械のソフト</li>
+<li>インターネットのウェブサイト、<br>ウェブアプリ</li>
+</ul>
+</div>
+          </div>
+          <div class="page" data-title="仕事の例">
+<div style="text-align:center;">
+仕事の例：<br>
+<img src="./pascal_job.jpg" style="width:20%;display:inline-block;vertical-align:middle;">
+<ul style="display:inline-block;text-align:left;vertical-align:middle;">
+<li>宇宙ロケットのソフト</li>
+<li>自動撮影のロボット</li>
+<li>遺物の検査の3Dソフト</li>
+<li>サンスクリット語の研究ソフト</li>
+</ul>
+</div>
+          </div>
+          <div class="page" data-title="仕事の流れ">
+<div style="text-align:center;">
+プログラマーの一日：<br>
+<img src="./programming.png" style="width:20%;display:inline-block;vertical-align:middle;">
+<ul style="display:inline-block;text-align:left;vertical-align:middle;">
+<li>お客さん、ユーザーと会議する</li>
+<li>プログラミング言語でソフトを作る</li>
+<li>ソフトをテスト、修正する</li>
+<li>ロボットにインストール</li>
+</ul>
+</div>
+          </div>
+        </div>
+
+        <div class="chapter" data-title="ソフト開発になるための準備">
+          <div class="page" data-title="ソフト開発者になる">
+<div style="text-align:center;">
+ソフト開発者になる：<br><br>
+<img src="./university.jpg" style="width:20%;display:inline-block;vertical-align:middle;">
+<ul style="display:inline-block;text-align:left;vertical-align:middle;">
+<li>中学校、高校で理科系の勉強</li>
+<li>専門学校、大学で学ぶ</li>
+<li>あるいは個人で学ぶ<br>（オンラインコース）</li>
+</ul>
+</div>
+          </div>
+          <div class="page" data-title="ソフト開発に合う人">
+<div style="text-align:center;">
+ソフト開発に合う人：<br>
+<img src="./personality.jpeg" style="width:20%;display:inline-block;vertical-align:middle;">
+<ul style="display:inline-block;text-align:left;vertical-align:middle;">
+<li>問題解決、パズルが好き</li>
+<li>数学が好む</li>
+<li>芸術、クリエイティブな人</li>
+<li>英語は欠かせない</li>
+<li>我慢強い</li>
+</ul>
+</div>
+          </div>
+        </div>
+
+        <div class="chapter" data-title="喜びと苦労">
+          <div class="page" data-title="喜び">
+<div style="text-align:center;">
+ソフト開発の喜び：<br>
+<img src="./happy.jpg" style="width:20%;display:inline-block;vertical-align:middle;">
+<ul style="display:inline-block;text-align:left;vertical-align:middle;">
+<li>自らの手でなにかを作る</li>
+<li>ユーザーの問題を解けて喜んでもらう</li>
+<li>肉体的に厳しくない</li>
+<li>リモートで働ける</li>
+<li>就職しやすい、給料が高い</li>
+</ul>
+</div>
+          </div>
+          <div class="page" data-title="苦労">
+<div style="text-align:center;">
+ソフト開発の苦労：<br>
+<img src="./frustrated.jpg" style="width:20%;display:inline-block;vertical-align:middle;">
+<ul style="display:inline-block;text-align:left;vertical-align:middle;">
+<li>精神的に厳しい</li>
+<li>ユーザーと人間関係が難しい</li>
+<li>仲間と人間関係が難しい</li>
+<li>一生勉強することになる</li>
+<li>目、肩、手、腰が痛くなる</li>
+</ul>
+</div>
+          </div>
+        </div>
+        <div class="chapter" data-title="人生の経験">
+          <div class="page" data-title="職業の選択">
+<div style="text-align:center;">
+職業の選択：<br>
+<img src="./choice.jpg" style="width:20%;display:inline-block;vertical-align:middle;">
+<ul style="display:inline-block;text-align:left;vertical-align:middle;">
+<li>中学時代、恐竜研究者を望む</li>
+<li>高校時代、先生にプログラミングを<br>勧められる</li>
+</ul>
+</div>
+          </div>
+          <div class="page" data-title="職業の選択">
+<div style="text-align:center;">
+職業の選択：<br>
+<img src="./choice.jpg" style="width:20%;display:inline-block;vertical-align:middle;">
+<ul style="display:inline-block;text-align:left;vertical-align:middle;">
+<li>今まで、フランス、カナダ、日本で、<br>ソフト開発者、写真家、翻訳者、<br>パン屋さん、ホテルのスタッフ、<br>映画のエキストラ、…</li>
+</ul>
+</div>
+          </div>
+          <div class="page" data-title="自分の職業の意味">
+<div style="text-align:center;">
+自分の職業の意味：<br>
+<img src="./society.jpg" style="width:20%;display:inline-block;vertical-align:middle;">
+<ul style="display:inline-block;text-align:left;vertical-align:middle;">
+<li>自分の職業は社会の中での自分の役割</li>
+<li>大工屋さんが魚屋さんのがげで<br>食べられる、魚屋さんは大工屋さんの<br>かげでいいお家に住められる</li>
+</ul>
+</div>
+          </div>
+          <div class="page" data-title="自分の職業の意味">
+<div style="text-align:center;">
+自分の職業の意味：<br>
+<img src="./society.jpg" style="width:20%;display:inline-block;vertical-align:middle;">
+<ul style="display:inline-block;text-align:left;vertical-align:middle;">
+<li>全てが必要けれど一人は一つしか<br>できない</li>
+<li>一人ずつが職業一つを選んで、<br>大切に務めたら、皆が幸せな社会で<br>生きられる</li>
+</ul>
+</div>
+          </div>
+          <div class="page" data-title="将来の役割の準備">
+<div style="text-align:center;">
+将来の役割の準備：<br>
+<img src="./curiosity.jpg" style="width:20%;display:inline-block;vertical-align:middle;">
+<ul style="display:inline-block;text-align:left;vertical-align:middle;">
+<li>好き嫌いなく、全ての科目を<br>大事にする</li>
+<li>個人研究、クラブ活動、スポーツ、<br>工場見学、などで多様な<br>経験を貯める</li>
+<li>まわりの大人を例としてよく見る</li>
+</ul>
+</div>
+          </div>
+          <div class="page" data-title="将来の役割の準備">
+<div style="text-align:center;">
+将来の役割の準備：<br>
+<img src="./curiosity.jpg" style="width:20%;display:inline-block;vertical-align:middle;">
+<ul style="display:inline-block;text-align:left;vertical-align:middle;">
+<li>少しだけでも経験した上、<br>大人になったら自分の<br>役割がより選びやすい</li>
+<li>予想ができない人生に心を<br>準備ができる</li>
+</ul>
+</div>
+          </div>
+        </div>
+        <div class="page" data-title="終わり">
+終わり。
+        </div>
+      </div>
+    </div>
+    <div class="prePostPage" id="status">
+      <input type="button" onclick="toc();" value="ToC">
+      <input type="button" onclick="prevChapter();" value="&#60;&#60">
+      <input type="button" onclick="prevPage();" value="&#60;">
+      <span id="statusPage"></span>
+      <input type="button" onclick="nextPage();" value="&#62;">
+      <input type="button" onclick="nextChapter();" value="&#62;&#62;">
+    </div>
+    <div class="prePostPage" id="footer">
+Presentation created with <a target="blank_" href="http://baillehachepascal.dev/Tools/Expo/index.html">Expo</a>.
+    </div>
+  </body>
+  <script>
+// Helper function to get an element in the DOM from its id
+function elem(id) { return document.getElementById(id); }
+
+// Instance of the main class
+let myExpo = {};
+
+// Main class
+class Expo {
+  // Constructor
+  constructor() {
+    // Index of the current page
+    this.curPage = 0;
+    // Index of the page to move to
+    this.moveToPage = 0;
+    // Number of pages
+    this.nbPage = document.querySelectorAll('.page').length;
+    // Flag to memorise if the TOC is displayed
+    this.flagToc = false;
+    // Create the TOC
+    let shiftPage = 0;
+    document.querySelectorAll('#pages > div').forEach((chapter, iChapter) => {
+      if(chapter.classList.contains("chapter")) {
+        let divChap = document.createElement("div");
+        divChap.className = "divTocChapter";
+        divChap.append(document.createTextNode(chapter.dataset.title));
+        chapter.querySelectorAll('.page').forEach((page, iPage) => {
+          let pageLink = document.createElement("a");
+          pageLink.href = "?page=" + (iPage + shiftPage + 1);
+          pageLink.append(document.createTextNode(page.dataset.title));
+          let divPage = document.createElement("div");
+          divPage.className = "divTocPage";
+          divPage.append(pageLink);
+          divChap.append(divPage);
+        });
+        elem("toc").append(divChap);
+        shiftPage += chapter.querySelectorAll('.page').length;
+      } else {
+        let pageLink = document.createElement("a");
+        pageLink.className = "divTocPage";
+        pageLink.href = "?page=" + (shiftPage + 1);
+        pageLink.append(document.createTextNode(chapter.dataset.title));
+        elem("toc").append(pageLink);
+        shiftPage += 1;
+      }
+    });
+  }
+  // Move to the previous page
+  prevPage() { if(this.curPage > 0) this.moveToPage = this.curPage - 1; }
+  // Move to the next page
+  nextPage() { 
+    if(this.curPage < this.nbPage - 1) this.moveToPage = this.curPage + 1;
+  }
+  // Move to the beginning of the previous chapter or previous chapter-less page
+  prevChapter() {
+    let curPage = document.querySelectorAll('.page')[this.curPage];
+    let pageParent = curPage.parentElement;
+    // If we are in a chapter
+    let prevPage = document.querySelectorAll('.page')[this.moveToPage];
+    if(pageParent.classList.contains("chapter")) {
+      // Move to the first page before that chapter
+      while(this.moveToPage > 0 && prevPage.parentElement == pageParent) {
+        this.moveToPage = this.moveToPage - 1;
+        prevPage = document.querySelectorAll('.page')[this.moveToPage];
+      }
+    // Else we are not in a chapter, move the previous page
+    } else if(this.curPage > 0) this.moveToPage = this.curPage - 1;
+    // If we are still in a chapter, move to the beginning of that chapter
+    prevPage = document.querySelectorAll('.page')[this.moveToPage];
+    let prevPageParent = prevPage.parentElement;
+    if(prevPageParent.classList.contains("chapter")) {
+      while(this.moveToPage > 0 && prevPage.parentElement == prevPageParent) {
+        this.moveToPage = this.moveToPage - 1;
+        prevPage = document.querySelectorAll('.page')[this.moveToPage];
+      }
+      if(prevPage.parentElement != prevPageParent) {
+        this.moveToPage = this.moveToPage + 1;
+      }
+    }
+  }
+  // Move to the beginning of the next chapter or next chapter-less page
+  nextChapter() {
+    let curPage = document.querySelectorAll('.page')[this.curPage];
+    let pageParent = curPage.parentElement;
+    // If we are in a chapter
+    if(pageParent.classList.contains("chapter")) {
+      // Move to the first page after that chapter
+      let nextPage = curPage;
+      while(
+        this.moveToPage < this.nbPage - 1 &&
+        nextPage.parentElement == pageParent
+      ) {
+        this.moveToPage = this.moveToPage + 1;
+        nextPage = document.querySelectorAll('.page')[this.moveToPage];
+      }
+    // Else we are not in a chapter, if we are not at the end of the pages
+    } else if(this.curPage < this.nbPage - 1) {
+      // Move to the next page
+      this.moveToPage = this.curPage + 1;
+    }
+  }
+  // Display the current page
+  showCurrentPage() {
+    // Fade out the current page
+    let curPage = document.querySelectorAll('.page')[this.curPage];
+    curPage.classList.add("divFadeOut");
+    setTimeout(() => {
+      // Hide the current page
+      let curPage = document.querySelectorAll('.page')[myExpo.curPage];
+      curPage.style.display = "none";
+      curPage.classList.remove("divFadeOut");
+      // Display and fade in the current page
+      myExpo.curPage = myExpo.moveToPage;
+      curPage = document.querySelectorAll('.page')[myExpo.curPage];
+      curPage.style.display = "block";
+      curPage.classList.add("divFadeIn");
+      // Update the status
+      elem("statusPage").innerHTML = (this.curPage + 1) + "/" + this.nbPage;
+      setTimeout(() => {
+        let curPage = document.querySelectorAll('.page')[myExpo.curPage];
+        curPage.classList.remove("divFadeIn");
+      }, 1000);
+    }, 1000);
+  }
+  // Display/hide the toc
+  toggleToc() {
+    if(this.toc) {
+      this.toc = false;
+      elem("pages").style.display = "flex";
+      elem("toc").style.display = "none";
+    } else {
+      this.toc = true;
+      elem("pages").style.display = "none";
+      elem("toc").style.display = "block";
+    }
+  }
+}
+
+// Hanlder for the onload event
+window.onload = function() {
+  // Add the event handler for the key press
+  elem("body").addEventListener("keydown", KeyPressed);
+  // Create the instance of the main class
+  myExpo = new Expo();
+  // Set the current page to 1 or the page requested through the url
+  // (.../index.html?page=XXX)
+  queryString = window.location.search;
+  urlParams = new URLSearchParams(queryString);
+  reqPage = urlParams.get('page');
+  page = parseInt(reqPage);
+  if(isNaN(page)) page = 1;
+  myExpo.moveToPage = page - 1;
+  // Display the current page
+  myExpo.showCurrentPage();
+}
+
+// Handler for the keypress events
+function KeyPressed(evt) {
+  // Cursor top
+  if(evt.keyCode == 38) myExpo.prevPage();
+  // Cursor down
+  else if(evt.keyCode == 40) myExpo.nextPage();
+  // Cursor right
+  else if(evt.keyCode == 39) myExpo.nextChapter();
+  // Cursor left
+  else if(evt.keyCode == 37) myExpo.prevChapter();
+  // 't'
+  else if(evt.keyCode == 84) myExpo.toggleToc();
+  // Ignore other keys
+  else return;
+  // Display the new current page
+  myExpo.showCurrentPage();
+  // Avoid the event to bubble up
+  evt.preventDefault();
+}
+
+// Handlers for the click event on the chapter/page move and ToC buttons
+function toc() { myExpo.toggleToc(); myExpo.showCurrentPage(); }
+function prevChapter() { myExpo.prevChapter(); myExpo.showCurrentPage(); }
+function prevPage() { myExpo.prevPage(); myExpo.showCurrentPage(); }
+function nextPage() { myExpo.nextPage(); myExpo.showCurrentPage(); }
+function nextChapter() { myExpo.nextChapter(); myExpo.showCurrentPage(); }
+  </script> 
+</html>
